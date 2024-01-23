@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:validation/validierung/email_validation.dart';
+import 'package:validation/validierung/password_validation.dart';
+import 'package:validation/validierung/username_validation.dart';
 
 void main() {
   runApp( MyApp());
@@ -36,45 +39,42 @@ class _MyFormState extends State<MyForm> {
         body: Center(
           child: Form(
             key: key,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextFormField(
-                 controller: controller1,
-                 decoration: const InputDecoration(labelText: 'Feld1'),
-                 validator: (value) => validateInput(value),
-                ),
-                TextFormField(
-                  controller: controller2,
-                  decoration: const InputDecoration(labelText: 'Feld2'),
-                  validator: (value) => validateInput(value),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextFormField(
+                   textAlign: TextAlign.center,
+                   controller: controller1,
+                   decoration: const InputDecoration(labelText: 'E-Mail'),
+                   validator: validEmail,
                   ),
                   TextFormField(
-                  controller: controller3,
-                  decoration: const InputDecoration(labelText: 'Feld3'),
-                  validator: (value) => validateInput(value),
-                  ),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed:(){
-                      if (key.currentState!.validate()) {}
-                  },
-              child: const Text('Absenden'),
-                  ),
-              ],
+                    textAlign: TextAlign.center,
+                    controller: controller2,
+                    decoration: const InputDecoration(labelText: 'Password'),
+                    validator: validPasswordLength,
+                    ),
+                  TextFormField(
+                    textAlign: TextAlign.center,
+                    controller: controller3,
+                    decoration: const InputDecoration(labelText: 'Username'),
+                    validator: validUsername,
+                    ),
+                    const SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed:(){
+                        if (key.currentState!.validate()) {}
+                    },
+                child: const Text('Überprüfen'),
+                    ),
+                ],
+              ),
             ),
           ),
       )));
       }
-      bool isValidInput(String? input) {
-       return input != null && input.isNotEmpty;
-       }
-       String? validateInput(String? input) {
-        if (isValidInput(input)) {
-          return null;
-        }else{
-          return 'dieses Feld ist erforderlich';
-        }
-       }
+      
     }
 
