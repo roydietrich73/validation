@@ -4,7 +4,7 @@ String? validUsername(String? input) {
   if (input == null) {
     return "Bitte einen Username eingeben";
   }
-  if(validateUsernameRules(input!)){
+  if(validateUsernameRules(input)){
     return null;
   } else {
     return "Ein neuen Benutzername eingeben mit mehr als 4 Stellen.";

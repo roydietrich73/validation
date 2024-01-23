@@ -2,7 +2,7 @@ String? validPasswordLength(String? input) {
   if (input == null) {
     return "Bitte ein Passwort eingeben.";
   }
-  if(validatePasswordRules(input!)){
+  if(validatePasswordRules(input)){
     return null;
   } else {
     return "Bitte ein Passwort mit mehr als 6 Stellen eingeben.";

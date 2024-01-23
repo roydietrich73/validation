@@ -2,7 +2,7 @@ String? validEmail(String? input) {
   if (input == null) {
     return 'Bitte Email eingeben';
   }
-  if (validateEmailRules(input!)) {
+  if (validateEmailRules(input)) {
     return null;
   }else {
     return 'Bitte eine valide Email eingeben';
@@ -10,7 +10,7 @@ String? validEmail(String? input) {
 }
 
 bool validateEmailRules(String input) {
-  if (!input!.contains('@')) {
+  if (!input.contains('@')) {
     return false;
   }
   return true;
